@@ -1,0 +1,15 @@
+data:
+  image: "blijblijblij/base:latest"
+  volumes:
+    - "~/.docker-volumes/jenkins/jenkins_home/:/var/jenkins_home"
+    - "/var/run/docker.sock:/var/run/docker.sock"
+    - "/usr/bin/docker:/usr/bin/docker"
+    - "~/.docker-volumes/jenkins/pentaho/:/opt/pentaho"
+jenkins:
+  volumes_from:
+    - "data"
+  build: .
+  expose:
+    - "8080"
+  ports:
+  - "8001:8080"

@@ -1,0 +1,55 @@
+# SETTINGS_FLAVOR=s3 
+# AWS_BUCKET=mybucket
+# STORAGE_PATH=/registry 
+# AWS_KEY=myawskey 
+# AWS_SECRET=myawssecret 
+# SETTINGS_FLAVOR=local 
+# STORAGE_PATH=/registry 
+# SEARCH_BACKEND=sqlalchemy 
+# LOGLEVEL=DEBUG 
+
+#  data container
+data:
+  image: "blijblijblij/base:latest"
+  volumes:
+    - "~/.docker-volumes/registry/dev/:/dev"
+    - "~/.docker-volumes/registry/acc/:/acc"
+# dev images
+dev:
+  image: "registry:latest"
+  environment:
+    STORAGE_PATH: "/dev"
+    SEARCH_BACKEND: "sqlalchemy"
+    SETTINGS_FLAVOR: "local"
+  volumes_from:
+    - "data"
+  expose:
+    - "5000"
+  ports:
+    - "5000:5000"
+# acc images
+acc:
+  image: "registry:latest"
+  environment:
+    STORAGE_PATH: "/acc"
+    SEARCH_BACKEND: "sqlalchemy"
+    SETTINGS_FLAVOR: "local"
+  volumes_from:
+    - "data"
+  expose:
+    - "5000"
+  ports:
+    - "5001:5000"
+# ui
+registryui:
+  image: atcol/docker-registry-ui
+  environment:
+    REG1: "http://dev:5000/v1/"
+    REG2: "http://acc:5000/v1/"
+  ports:
+    - "5002:8080"
+  volumes:
+    - /var/run/docker.sock:/docker.sock
+  links:
+    - dev
+    - acc
