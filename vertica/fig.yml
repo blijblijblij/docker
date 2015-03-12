@@ -1,0 +1,13 @@
+#docker run -P -v /path/to/vertica_data:/home/dbadmin/docker bluelabs/vertica
+data:
+  image: "blijblijblij/base:latest"
+  volumes:
+    - "~/.docker-volumes/vertica/:/home/dbadmin/docker"
+db:  
+  build: .
+  volumes_from:
+    - "data"
+  expose:
+    - "5433"
+  ports:
+    - "5433:5433"
