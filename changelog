@@ -1,3 +1,8 @@
+2015-03-28 | Version 2
+2015-03-28 | Added mesos config [Rogier Wessel]
+2015-03-28 | Added awscli container [Rogier Wessel]
+2015-03-28 | Removed mysql / mysql slave from default dev env
+
 2015-03-12 | Version 1, first one based on private repo
 2015-03-12 | Added test vertica (HEAD, develop) [Rogier Wessel]
 2015-03-12 | Added test saiku [Rogier Wessel]
