@@ -1,0 +1,38 @@
+data:
+  image: "blijblijblij/base"
+  volumes:
+    - "~/.docker-volumes/teamcity/data/:/data/teamcity/"
+#   - "~/.docker-volumes/teamcity/db/:/var/lib/postgresql/data/"
+#db:
+#  image: postgres:9.4
+#  volumes_from:
+#    - "data"
+#  environment:
+#    POSTGRES_USER: "root"
+#    POSTGRES_PASSWORD: "password"
+#  expose:
+#    - "5432"
+#  ports:
+#    - "5432:5432"
+server:
+  build: server
+  volumes_from:
+    - "data"
+#  links:
+#    - "db"
+  expose:
+    - "8111"
+  ports:
+    - "8111:8111"
+agent:
+  build: agent
+  #command: sleep 1000000
+  links:
+    - "server"
+  environment:
+    TEAMCITY_SERVER: "http://server:8111"
+  expose:
+    - "9090"
+  ports:
+    #- "9090:9090"
+    - "9090"
