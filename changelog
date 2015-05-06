@@ -1,3 +1,6 @@
+2015-05-06 | Version 3
+2015-05-06 | Added teamcity server / agent config
+
 2015-03-28 | Version 2
 2015-03-28 | Added mesos config [Rogier Wessel]
 2015-03-28 | Added awscli container [Rogier Wessel]
