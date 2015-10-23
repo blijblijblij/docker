@@ -1,0 +1,35 @@
+{
+  "id": "/pentaho/biserver-ee",
+  "instances": 1,
+  "cpus": 2,
+  "mem": 6192.0,
+  "disk": 10240,
+  "container": {
+    "docker": {
+      "type": "DOCKER",
+      "image": "blijblijblij/pentaho:biserver-ce-5.3",
+      "network": "BRIDGE",
+      "parameters": [],
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "protocol": "tcp",
+          "servicePort": 8080
+        }
+      ]
+    },
+    "volumes": [
+      {
+        "hostPath": "/home/rogier/.docker-volumes/mesos/storage/",
+        "containerPath": "/storage",
+        "mode": "RW"
+      }
+    ]
+  },
+  "env": {
+    "SETTINGS_FLAVOR": "local",
+    "STORAGE_PATH": "/storage"
+  },
+  "ports": [ 0 ]
+}
