@@ -1,0 +1,14 @@
+verticadata:
+  image: "reelmetrics/base"
+  volumes:
+    - "/home/rogier/.docker-volumes/dev/vertica/:/home/dbadmin/docker"
+
+vertica:  
+  build: .
+#  image: "vertica:latest"
+  volumes_from:
+    - "verticadata"
+  expose:
+    - "5433"
+  ports:
+    - "5433:5433"
