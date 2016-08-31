@@ -1,6 +1,6 @@
 # use the debian stable as my base image
 
-FROM debian:stable
+FROM debian:jessie
 
 MAINTAINER Rogier Wessel, rhwessel@xs4all.nl
 
@@ -9,15 +9,12 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV DEBIAN_PRIORITY critical
 ENV DEBCONF_NOWARNINGS yes
 
-# make sure the package repository is up to date
-RUN echo "deb http://ftp.nl.debian.org/debian stable main contrib non-free" > /etc/apt/sources.list
-RUN echo "deb http://ftp.debian.org/debian/ wheezy-updates main contrib non-free" >> /etc/apt/sources.list
-RUN echo "deb http://security.debian.org/ wheezy/updates main contrib non-free" >> /etc/apt/sources.list
-
-# update && install packages
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install -y --force-yes --no-install-recommends ca-certificates software-properties-common
-RUN apt-get install -y --force-yes --no-install-recommends curl less unzip vim wget
+# make sure the package repository is up to date & update && install packages
+RUN echo "deb http://ftp.nl.debian.org/debian/ jessie main contrib non-free" > /etc/apt/sources.list && \
+  echo "deb http://security.debian.org/ jessie/updates main contrib non-free" >> /etc/apt/sources.list && \
+  apt-get update && \
+  apt-get upgrade -y && \
+  apt-get install -y --force-yes --no-install-recommends ca-certificates software-properties-common && \
+  apt-get install -y --force-yes --no-install-recommends curl less unzip vim wget
 
 USER root
