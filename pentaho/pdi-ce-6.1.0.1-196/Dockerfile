@@ -2,8 +2,8 @@ FROM blijblijblij/java:8
 
 MAINTAINER Rogier Wessel, rhwessel@xs4all.nl
 
-ENV MAJOR_VERSION 6.0
-ENV MINOR_VERSION 6.0.1.0-386
+ENV MAJOR_VERSION 6.1
+ENV MINOR_VERSION 6.1.0.1-196
 
 # Update the APT cache
 RUN apt-get update && apt-get upgrade -y
