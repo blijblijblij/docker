@@ -20,8 +20,9 @@ RUN su -c "curl -L http://downloads.sourceforge.net/project/pentaho/Data%20Integ
   rm -f /opt/pentaho/pdi-ce.zip" pentaho
 
 # Add libs
-ADD lib/mysql-connector-java-5.1.35-bin.jar /opt/pentaho/biserver-ce/tomcat/lib/mysql.jar
-ADD lib/vertica-jdbc-7.2.3-0.jar /opt/pentaho/biserver-ce/tomcat/lib/vertica.jar
+ADD https://github.com/blijblijblij/docker/raw/develop/lib/mysql-connector-java-5.1.35-bin.jar /opt/pentaho/data-integration/lib/mysql.jar
+ADD https://github.com/blijblijblij/docker/raw/develop/lib/postgresql-9.4-1201.jdbc41.jar /opt/pentaho/data-integration/lib/postgres.jar
+ADD https://github.com/blijblijblij/docker/raw/develop/lib/vertica-jdbc-7.2.3-0.jar /opt/pentaho/data-integration/lib/vertica.jar
 
 ENTRYPOINT ["/bin/bash"]
 
