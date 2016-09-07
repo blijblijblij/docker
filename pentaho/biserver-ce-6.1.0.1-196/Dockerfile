@@ -44,4 +44,4 @@ EXPOSE 8080
 
 ENTRYPOINT ["/opt/pentaho/biserver-ce/start-pentaho.sh"]
 
-USER pentaho
+# USER pentaho

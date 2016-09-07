@@ -26,4 +26,4 @@ ADD https://github.com/blijblijblij/docker/raw/develop/lib/vertica-jdbc-7.2.3-0.
 
 ENTRYPOINT ["/bin/bash"]
 
-USER pentaho
+# USER pentaho
