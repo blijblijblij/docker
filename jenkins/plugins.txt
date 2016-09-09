@@ -1,7 +1,0 @@
-git-client:latest
-git:latest
-scm-api:latest
-greenballs:latest
-skip-certificate-check:latest
-dockerhub:1.0
-disk-usage:0.25
