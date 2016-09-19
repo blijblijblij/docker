@@ -1,0 +1,26 @@
+minecraft-server:
+  ports:
+    - "25565:25565"
+
+  environment:
+    EULA: "true"
+    DIFFICULTY: "easy"
+    SPAWN_ANIMALS: "true"
+    SPAWN_NPCS: "true"
+    MODE: "creative"
+    MOTD: "De server van Tijger en Papa"
+    JVM_OPTS: "-Xmx1024M -Xms1024M"
+    # SKIP_OWNERSHIP_FIX: "true"
+    GENERATE_STRUCTURES: "true"
+    VERSION: "1.10.1"
+
+  image: itzg/minecraft-server
+
+  container_name: minecraft-server
+
+  volumes:
+    - "$HOME/Data/mc/:/data/"
+
+  tty: true
+  stdin_open: true
+  restart: always
